@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LifeLine Track | Emergency Ambulance Service</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Leaflet Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    LifeLine Track
+                </div>
+                <ul class="nav-links">
+                    <li>
+                        <select id="languageSelector"
+                            style="padding: 5px; border-radius: 5px; border: 1px solid #ccc; margin-right: 10px; cursor: pointer;">
+                            <option value="en">English</option>
+                            <option value="gu">ગુજરાતી</option>
+                            <option value="hi">हिंदी</option>
+                        </select>
+                    </li>
+                    <li><a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><a href="#map-section" data-i18n="nav_map">Live Map</a></li>
+                    <li><a href="#hospitals" data-i18n="nav_hospitals">Hospitals</a></li>
+                    <li><a href="dashboard.html" class="btn btn-outline" style="padding: 8px 20px; border-radius: 8px;"
+                            data-i18n="nav_driver">Driver Login</a></li>
+                    <li><a href="admin.html" class="btn btn-primary" style="padding: 8px 20px; border-radius: 8px;"
+                            data-i18n="nav_admin">Admin</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="hero-tagline" data-i18n="hero_tagline">🚑 24/7 Emergency Response</span>
+                    <h1 data-i18n="hero_title">Saving Lives Through <br>Faster Response</h1>
+                    <p data-i18n="hero_desc">Immediate ambulance tracking for Ramol Gaam & Changa regions. We connect
+                        you to the nearest
+                        hospitals instantly.</p>
+                    <div style="display: flex; gap: 15px; flex-wrap: wrap;">
+                        <button id="requestBtn" class="btn btn-danger" data-i18n="btn_request">
+                            <i class="fa-solid fa-truck-medical"></i> Request Ambulance
+                        </button>
+                        <a href="#hospitals" class="btn btn-outline" data-i18n="btn_find_hospitals">Find Hospitals</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="pulse-circle"></div>
+                    <div class="hero-card">
+                        <div
+                            style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+                            <h3 style="font-size: 1.1rem;" data-i18n="nearby_units">Nearby Units</h3>
+                            <span style="color: var(--success-color); font-size: 0.9rem;" data-i18n="live_updates"><i
+                                    class="fa-solid fa-circle" style="font-size: 8px;"></i> Live Updates</span>
+                        </div>
+                        <div
+                            style="background: #f8fafc; padding: 15px; border-radius: 12px; margin-bottom: 10px; display: flex; gap: 15px; align-items: center;">
+                            <div
+                                style="width: 40px; height: 40px; background: #e0f2fe; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <i class="fa-solid fa-truck-medical"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 1rem;">Unit A-101</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-light);">2.5 km away • 5 min</p>
+                            </div>
+                        </div>
+                        <div
+                            style="background: #f8fafc; padding: 15px; border-radius: 12px; display: flex; gap: 15px; align-items: center;">
+                            <div
+                                style="width: 40px; height: 40px; background: #e0f2fe; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: var(--primary-color);">
+                                <i class="fa-solid fa-truck-medical"></i>
+                            </div>
+                            <div>
+                                <h4 style="font-size: 1rem;">Unit B-204</h4>
+                                <p style="font-size: 0.85rem; color: var(--text-light);">4.0 km away • 12 min</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="how_it_works">How It Works</h2>
+                <p style="color: var(--text-light);" data-i18n="how_it_works_desc">Simple steps to get help when you
+                    need it most</p>
+            </div>
+            <div class="feature-grid">
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-location-dot"></i>
+                    </div>
+                    <h3 data-i18n="step_1_title">1. Share Location</h3>
+                    <p style="color: var(--text-light);" data-i18n="step_1_desc">We automatically detect your location
+                        to send help exactly
+                        where you are.</p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-truck-medical"></i>
+                    </div>
+                    <h3 data-i18n="step_2_title">2. Request Ambulance</h3>
+                    <p style="color: var(--text-light);" data-i18n="step_2_desc">One tap to alert nearest available
+                        units near Ramol & Changa.
+                    </p>
+                </div>
+                <div class="feature-box">
+                    <div class="icon-box">
+                        <i class="fa-solid fa-hospital"></i>
+                    </div>
+                    <h3 data-i18n="step_3_title">3. Reach Hospital</h3>
+                    <p style="color: var(--text-light);" data-i18n="step_3_desc">Live tracking ensures the fastest route
+                        to Charusat, PHC, or
+                        Zydus.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map Section -->
+    <section id="map-section" class="map-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="map_title">Live Tracking</h2>
+                <p data-i18n="map_desc">Real-time view of available ambulances and hospitals</p>
+            </div>
+            <div class="map-container">
+                <div id="map"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hospitals -->
+    <section id="hospitals" style="padding: 80px 0; background-color: var(--bg-light);">
+        <div class="container">
+            <div class="section-header">
+                <h2 data-i18n="hospitals_title">Nearby Hospitals</h2>
+                <p data-i18n="hospitals_desc">Verified medical centers in your vicinity</p>
+            </div>
+            <div id="hospital-list" class="hospital-list">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </section>
+
+    <footer style="background: var(--text-dark); color: white; padding: 60px 0 20px;">
+        <div class="container">
+            <div
+                style="display: flex; flex-wrap: wrap; gap: 40px; justify-content: space-between; margin-bottom: 40px;">
+                <div style="max-width: 300px;">
+                    <h3 style="margin-bottom: 20px; font-size: 1.5rem;"><i class="fa-solid fa-heart-pulse"></i> LifeLine
+                    </h3>
+                    <p style="color: #94a3b8;" data-i18n="footer_desc">Dedictated to saving lives in rural Gujarat
+                        through technology and rapid
+                        response.</p>
+                </div>
+                <div>
+                    <h4 style="margin-bottom: 15px;" data-i18n="footer_contacts">Emergency Contacts</h4>
+                    <ul style="list-style: none; color: #94a3b8;">
+                        <li style="margin-bottom: 10px;"><span data-i18n="footer_ambulance">Ambulance</span>:
+                            <strong>108</strong></li>
+                        <li style="margin-bottom: 10px;"><span data-i18n="footer_police">Police</span>:
+                            <strong>100</strong></li>
+                        <li><span data-i18n="footer_helpline">Helpline</span>: <strong>+91-12345-67890</strong></li>
+                    </ul>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #334155; padding-top: 20px; text-align: center; color: #64748b;">
+                <p data-i18n="footer_copy">&copy; 2025 LifeLine Track. Built for Social Good.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Logic -->
+    <!-- Logic -->
+    <script src="js/data.js"></script>
+    <script src="js/languages.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | LifeLine</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8fafc;
+        }
+
+        .admin-container {
+            padding: 120px 20px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .table-responsive {
+            background: white;
+            border-radius: 16px;
+            box-shadow: var(--shadow-sm);
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #f1f5f9;
+        }
+
+        th {
+            color: var(--text-light);
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        td {
+            font-weight: 500;
+        }
+
+        .status-dot {
+            height: 8px;
+            width: 8px;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 6px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <i class="fa-solid fa-heart-pulse"></i>
+                    LifeLine Admin
+                </div>
+                <ul class="nav-links">
+                    <li><a href="index.html">View Site</a></li>
+                    <li><a href="#"><i class="fa-solid fa-right-from-bracket"></i> Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="admin-container">
+        <h1 style="margin-bottom: 30px;">Dashboard Overview</h1>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon bg-blue"><i class="fa-solid fa-ambulance"></i></div>
+                <div>
+                    <h3 style="font-size: 2rem; line-height: 1;">12</h3>
+                    <p style="color: var(--text-light);">Active Ambulances</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon bg-green"><i class="fa-solid fa-check-circle"></i></div>
+                <div>
+                    <h3 style="font-size: 2rem; line-height: 1;">8</h3>
+                    <p style="color: var(--text-light);">Available </p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon bg-red"><i class="fa-solid fa-triangle-exclamation"></i></div>
+                <div>
+                    <h3 style="font-size: 2rem; line-height: 1;">3</h3>
+                    <p style="color: var(--text-light);">Critical Trips</p>
+                </div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon" style="background: #8b5cf6;"><i class="fa-solid fa-clock"></i></div>
+                <div>
+                    <h3 style="font-size: 2rem; line-height: 1;">8m</h3>
+                    <p style="color: var(--text-light);">Avg Response</p>
+                </div>
+            </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 30px;">
+            <div class="table-responsive">
+                <h3 style="margin-bottom: 20px;">Live Fleet Status</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Driver</th>
+                            <th>Location</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#A-101</td>
+                            <td>Rajesh Kumar</td>
+                            <td>Changa Road</td>
+                            <td><span class="status-dot" style="background: #22c55e;"></span>Available</td>
+                            <td><button class="btn btn-outline track-btn"
+                                    style="padding: 4px 12px; font-size: 0.8rem; border-radius: 6px;">Track</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#B-205</td>
+                            <td>Vikram Singh</td>
+                            <td>Ramol Village</td>
+                            <td><span class="status-dot" style="background: #ef4444;"></span>On Trip</td>
+                            <td><button class="btn btn-outline track-btn"
+                                    style="padding: 4px 12px; font-size: 0.8rem; border-radius: 6px;">Track</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#C-309</td>
+                            <td>Amit Patel</td>
+                            <td>Near Zydus</td>
+                            <td><span class="status-dot" style="background: #eab308;"></span>Maintenance</td>
+                            <td><button class="btn btn-outline details-btn"
+                                    style="padding: 4px 12px; font-size: 0.8rem; border-radius: 6px;">Details</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-responsive">
+                <h3 style="margin-bottom: 20px;">Hospital Status</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Hospital</th>
+                            <th>Beds</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>CHARUSAT Hospital</td>
+                            <td style="color: #22c55e; font-weight: 700;">12</td>
+                        </tr>
+                        <tr>
+                            <td>PHC Changa</td>
+                            <td style="color: #ef4444; font-weight: 700;">4</td>
+                        </tr>
+                        <tr>
+                            <td>Zydus Hospital</td>
+                            <td style="color: #22c55e; font-weight: 700;">45</td>
+                        </tr>
+                        <tr>
+                            <td>Ved Multispeciality</td>
+                            <td style="color: #eab308; font-weight: 700;">6</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>
